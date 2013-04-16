@@ -48,3 +48,21 @@ web_app node['gerrit']['hostname'] do
   ssl_certfile ssl_certfile_path
   ssl_keyfile ssl_keyfile_path
 end
+
+if node['gerrit']['proxy_users']
+  include_recipe "apache2::mod_auth_basic"
+
+  htpasswd_file = "/etc/apache2/htpasswd_gerrit"
+
+  file htpasswd_file do
+    content ""
+    owner "www-data"
+    group "www-data"
+  end 
+
+  node['gerrit']['proxy_users'].each do |user|
+    execute "add-user-to-gerrit-htpasswd" do
+      command "htpasswd -b #{htpasswd_file} #{user.name} #{user.password}"
+    end
+  end
+end
