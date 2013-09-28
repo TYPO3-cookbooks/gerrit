@@ -21,6 +21,15 @@
   ProxyVia Off
   ProxyPreserveHost On
 
+  <% if node['gerrit']['auth'] == 'http' %>
+  <Location "/login/">
+    AuthType Basic
+    AuthName "Gerrit Code Review"
+    AuthUserFile <%= node['gerrit']['auth_file']  %>
+    Require valid-user
+  </Location>
+  <% end %>
+
   <Proxy *>
     Order deny,allow
     Allow from all
