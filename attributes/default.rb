@@ -31,6 +31,9 @@ default['gerrit']['group'] = "gerrit"
 default['gerrit']['home'] = "/var/gerrit"
 default['gerrit']['install_dir'] = "#{node['gerrit']['home']}/review"
 
+default['gerrit']['auth'] = "OPENID"
+default['gerrit']['auth_file'] = "/etc/apache2/htpasswd"
+
 default['gerrit']['hostname'] = node['fqdn']
 default['gerrit']['canonicalWebUrl'] = "http://#{node['gerrit']['hostname']}/"
 default['gerrit']['port'] = "29418"

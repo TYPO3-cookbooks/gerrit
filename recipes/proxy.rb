@@ -21,6 +21,9 @@
 include_recipe "apache2"
 include_recipe "apache2::mod_proxy"
 include_recipe "apache2::mod_proxy_http"
+<% if node['gerrit']['auth'] == "http" %>
+include_recipe "apache2::mod_authn_file"
+<% end %>
 
 apache_site "default" do
   enable false
