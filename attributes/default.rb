@@ -31,6 +31,11 @@ default['gerrit']['group'] = "gerrit"
 default['gerrit']['home'] = "/var/gerrit"
 default['gerrit']['install_dir'] = "#{node['gerrit']['home']}/review"
 
+default['gerrit']['auth']['type'] = "OPENID"
+
+default['gerrit']['sendemail']['enable'] = true
+default['gerrit']['sendemail']['smtpServer'] = "localhost"
+
 default['gerrit']['hostname'] = node['fqdn']
 default['gerrit']['canonicalWebUrl'] = "http://#{node['gerrit']['hostname']}/"
 default['gerrit']['port'] = "29418"

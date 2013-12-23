@@ -73,6 +73,15 @@ Database configuration
 * `node['gerrit']['database']['username']` - Username to connect to the database server as ([database.username](http://gerrit-documentation.googlecode.com/svn/Documentation/2.5/config-gerrit.html#database.username)). Defaults to `gerrit`.
 * `node['gerrit']['database']['password']` - Password to authenticate to the database server with ([database.password](http://gerrit-documentation.googlecode.com/svn/Documentation/2.5/config-gerrit.html#database.password)). Defaults to `gerrit`.
 
+Gerrit Auth
+----
+* `node['gerrit']['auth']['type']` - Set auth type ([sendemail.smtpServer](http://gerrit-documentation.googlecode.com/svn/Documentation/2.5/config-gerrit.html#auth.type)). Defaults to `OPENID`.
+
+E-mail
+----
+* `node['gerrit']['sendemail']['enable']` - Enable/disable e-mail notification ([sendemail.enable](http://gerrit-documentation.googlecode.com/svn/Documentation/2.5/config-gerrit.html#sendemail.enable)). Defaults to `true`.
+* `node['gerrit']['sendemail']['smtpServer']` - Smtp server adddress ([sendemail.smtpServer](http://gerrit-documentation.googlecode.com/svn/Documentation/2.5/config-gerrit.html#sendemail.smtpServer)). Defaults to `localhost`.
+
 Theme
 -----
 
