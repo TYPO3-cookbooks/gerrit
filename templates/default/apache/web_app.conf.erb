@@ -1,4 +1,4 @@
-<VirtualHost *:<%= node['gerrit']['ssl'] ? '443' : '80' %>>
+<VirtualHost *:<%= node['gerrit']['ssl'] ? '443' : (@params[:server_port] || node['apache']['listen_ports'].first) %>>
   ServerName <%= @params[:server_name] %>
   ServerAlias <% @params[:server_aliases].each do |a| %><%= "#{a}" %> <% end %>
   DocumentRoot <%= @params[:docroot] %>
