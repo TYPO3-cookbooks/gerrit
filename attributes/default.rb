@@ -55,6 +55,20 @@ default['gerrit']['database']['name'] = "gerrit"
 default['gerrit']['database']['username'] = "gerrit"
 default['gerrit']['database']['password'] = "gerrit"
 
+# When using MySql as a db for Gerrit, the Gerrit documentation recommends changing the db charset
+# to latin1, in order to allow 1000 byte keys using the default MySQL MyISAM engine.  This can lead
+# to spurious errors from Gerrit regarding "Illegal mix of collations".  We can avoid this by being
+# explicit to the connector about which charset to use, by setting database.url in gerrit.config.
+#
+# One may use utf8 and avoid the key length limitation by switching to InnoDB, though we don't want
+# to assume this choice.
+default['gerrit']['database']['jdbc_url'] =
+  "jdbc:mysql://#{node['gerrit']['database']['host']}:3306" +
+  "/#{node['gerrit']['database']['name']}?" +
+  "user=#{node['gerrit']['database']['username']}&" +
+  "password=#{node['gerrit']['database']['password']}&" +
+  "useUnicode=false&characterEncoding=latin1"
+
 default['gerrit']['theme']['compile_files'] = []
 default['gerrit']['theme']['static_files'] = []
 
