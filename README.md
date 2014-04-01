@@ -96,6 +96,10 @@ Replication
 * `node['gerrit']['replication']['remotes']` - Hash of remotes to populate to `replication.config`. Keys should be the remote name, while values should be a hash of options to apply to that remote, such as `url`, `threads`, etc.`.  See [Gerrit docs](http://gerrit.googlecode.com/svn/documentation/2.0/config-replication.html).
 * `node['gerrit']['replication']['plugin_download_url']` - URL to download the `replication.jar` plugin file from.  The build must be compatible with the Gerrit version specified in `node['gerrit']['version']`.  See [Gerrit docs](http://gerrit.googlecode.com/svn/documentation/2.0/config-replication.html).
 
+Tuning
+------
+* `node['gerrit']['receive']['checkReferencedObjectsAreReachable']` - If set to true, Gerrit will validate that all referenced objects that are not included in the received pack are reachable by the user.  See [Gerrit docs](http://gerrit-documentation.googlecode.com/svn-history/r63/ReleaseNotes/ReleaseNotes-2.6.html).
+
 Recipes
 =======
 
