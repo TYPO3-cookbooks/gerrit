@@ -31,13 +31,14 @@ if node['gerrit']['ssl']
 
   ssl_certfile_path = "/etc/ssl/certs/ssl-cert-snakeoil.pem"
   ssl_keyfile_path  = "/etc/ssl/private/ssl-cert-snakeoil.key"
+  ssl_cabundle_path  = ""
 
   # don't use snakeoil CA, if specified otherwise
-  if node['gerrit']['ssl_certificate']
-    ssl_certificate node['gerrit']['ssl_certificate']
-    ssl_certfile_path = node['ssl_certificates']['path'] + "/" + node['gerrit']['ssl_certificate'] + ".crt"
-    ssl_keyfile_path  = node['ssl_certificates']['path'] + "/" + node['gerrit']['ssl_certificate'] + ".key"
-    ssl_cabundle_path = node['ssl_certificates']['path'] + "/" + node['gerrit']['ssl_certificate'] + ".ca-bundle"
+  if node['ssl_certificates']
+    ssl_certfile_path = node['ssl_certificates']['ssl_certfile_path']
+    ssl_keyfile_path  = node['ssl_certificates']['ssl_keyfile_path']
+    ssl_cabundle_path = node['ssl_certificates']['ssl_cabundle_path'] \
+        if node['ssl_certificates']['ssl_cabundle_path']
   end
 end
 
