@@ -47,6 +47,8 @@ default['gerrit']['canonicalGitUrl'] = nil
 default['gerrit']['ssl'] = false
 default['gerrit']['ssl_certificate'] = nil
 
+default['gerrit']['gitweb']['enabled'] = false
+default['gerrit']['gitweb']['cgi'] = '/usr/lib/cgi-bin/gitweb.cgi'
 
 override['mysql']['bind_address'] = "127.0.0.1"
 default['gerrit']['database']['type'] = "MYSQL"

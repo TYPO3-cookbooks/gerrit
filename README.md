@@ -101,6 +101,10 @@ Tuning
 ------
 * `node['gerrit']['receive']['checkReferencedObjectsAreReachable']` - If set to true, Gerrit will validate that all referenced objects that are not included in the received pack are reachable by the user.  See [Gerrit docs](http://gerrit-documentation.googlecode.com/svn-history/r63/ReleaseNotes/ReleaseNotes-2.6.html).
 
+Gitweb
+------
+* `node['gerrit']['gitweb']['enabled']` - Set to true to enable gitweb functionality.  See [Gerrit docs])(https://gerrit-review.googlesource.com/Documentation/config-gerrit.html#gitweb).
+
 Recipes
 =======
 
