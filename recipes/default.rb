@@ -113,6 +113,10 @@ node['gerrit']['theme']['static_files'].each do |file|
   end
 end
 
+if node['gerrit']['gitweb']
+  package "gitweb"
+end
+
 ####################################
 # MySQL
 ####################################
