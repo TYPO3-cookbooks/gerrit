@@ -3,9 +3,6 @@ DEPENDENCIES
     path: .
     metadata: true
   postgresql (~> 3.3)
-  ssl_certificates
-    git: git://github.com/TYPO3-cookbooks/ssl_certificates.git
-    branch: master
 
 GRAPH
   apache2 (1.10.0)
