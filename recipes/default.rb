@@ -217,10 +217,6 @@ link "/etc/init.d/gerrit" do
   to "#{node['gerrit']['install_dir']}/bin/gerrit.sh"
 end
 
-link "/etc/rc3.d/S90gerrit" do
-  to "../init.d/gerrit"
-end
-
 service "gerrit" do
   supports :status => false, :restart => true, :reload => true
   action [ :enable, :start ]
