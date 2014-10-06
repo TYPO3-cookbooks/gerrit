@@ -53,3 +53,9 @@ postgresql_database "flushing postgresql privileges" do
   action :query
   sql "FLUSH PRIVILEGES"
 end
+
+postgresql_database node['gerrit']['database']['name'] do
+  connection postgresql_connection_info
+  action :query
+  sql "ALTER DATABASE " + node['gerrit']['database']['name'] + " OWNER TO " + node['gerrit']['database']['username']
+end
