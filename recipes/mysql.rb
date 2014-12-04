@@ -18,7 +18,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-include_recipe "mysql"
+include_recipe "mysql::client"
 include_recipe "mysql::server"
 include_recipe "database::mysql"
 
