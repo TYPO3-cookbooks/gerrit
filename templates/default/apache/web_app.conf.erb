@@ -24,6 +24,14 @@
   <Proxy *>
     Order deny,allow
     Allow from all
+    <% if node['gerrit']['proxy_users'] -%>
+
+    AuthType Basic
+    AuthName "Restricted Files"
+    AuthBasicProvider file
+    AuthUserFile /etc/apache2/htpasswd_gerrit
+    Require valid-user
+    <% end %>
   </Proxy>
 
   AllowEncodedSlashes On

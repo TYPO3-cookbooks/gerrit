@@ -39,6 +39,7 @@ default['gerrit']['hostname'] = node['fqdn']
 default['gerrit']['canonicalWebUrl'] = "http://#{node['gerrit']['hostname']}/"
 default['gerrit']['port'] = "29418"
 default['gerrit']['proxy'] = true
+default['gerrit']['proxy_users_users'] = []
 default['gerrit']['canonicalGitUrl'] = nil
 
 # if this is set, an entry in the ssl_certificates data bag matching the given name must exist
