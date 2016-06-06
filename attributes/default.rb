@@ -78,6 +78,10 @@ override['mysql']['bind_address'] = "127.0.0.1"
 default['gerrit']['theme']['compile_files'] = []
 default['gerrit']['theme']['static_files'] = []
 default['gerrit']['theme']['source_cookbook'] = nil
+default['gerrit']['theme']['entries'] = nil
+
+# Commentlinks.  These are created as [commentlink "key"]
+default['gerrit']['commentlink'] = nil
 
 default['gerrit']['peer_keys']['enabled'] = false
 default['gerrit']['peer_keys']['public'] = ""

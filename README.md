@@ -88,6 +88,14 @@ Theme
 
 * `node['gerrit']['theme']['compile_files]` - Hash of files deployed to `etc/`. Possible file names are `GerritSite(Header|Footer).html` and `GerritSite.css`. See [Gerrit docs](http://gerrit-documentation.googlecode.com/svn/Documentation/2.5/config-headerfooter.html#_html_header_footer). Gerrit will automatically reload these files, as long as not deactivated explicitly.
 * `node['gerrit']['static_files']` - Hash of files deployed to `static/`. Files, which can be used in a custom theme and are available through `#{node['gerrit']['canonicalWebUrl']}/static/`. See [Gerrit docs](http://gerrit-documentation.googlecode.com/svn/Documentation/2.5/config-headerfooter.html#_static_images).
+* `node['gerrit']['theme']['entries']` - All entries beneath `entries` will be automatically added under [theme] in gerrit.conf.
+
+CommentLink
+-----
+
+Gerrit allows you to customize various links within the UI.  These are stored as `[commentlink "name"].`
+
+* `node['gerrit']['commentlink']['example'] - A hash of key/value pairs to create below `[commentlink "example"]`
 
 Replication
 -----------
