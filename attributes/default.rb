@@ -33,6 +33,7 @@ default['gerrit']['config']['database']['username'] = "gerrit"
 default['gerrit']['config']['database']['password'] = "gerrit"
 default['gerrit']['config']['index']['type'] = "LUCENE"
 default['gerrit']['config']['auth']['type'] = "OPENID"
+default['gerrit']['config']['auth']['url'] = nil
 default['gerrit']['config']['auth']['registerEmailPrivateKey'] = nil
 default['gerrit']['config']['auth']['restTokenPrivateKey'] = nil
 default['gerrit']['config']['sendemail']['smtpServer'] = "localhost"

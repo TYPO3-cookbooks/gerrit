@@ -75,6 +75,7 @@ Database configuration
 Gerrit Auth
 ----
 * `node['gerrit']['auth']['type']` - Set auth type ([auth.type](http://gerrit-documentation.googlecode.com/svn/Documentation/2.5/config-gerrit.html#auth.type)). Defaults to `OPENID`.
+* `node['gerrit']['auth']['url']` - Value of `openIdSsoUrl` if the auth type is 'OpenID_SSO'.
 
 E-mail
 ----
