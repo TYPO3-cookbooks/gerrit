@@ -28,7 +28,7 @@ control 'gerrit-1' do
 end
 
 control 'gerrit-2' do
-  title 'Gerrit Features'
+  title 'Gerrit Hooks'
 
   describe file('/var/gerrit/review/hooks/patchset-created') do
     it { should exist }
@@ -49,5 +49,19 @@ control 'gerrit-2' do
   command file('/var/gerrit/review/hooks/patchset-created.d/test.sh') do
     its('exit_status') { should eq 0 }
     its('stdout') { should include 'Hello World'}
+  end
+end
+
+control 'gerrit-3' do
+  title 'Gerrit System Daemon Setup'
+
+  describe file('/etc/default/gerritcodereview') do
+    its('content') { should include 'JAVA_OPTIONS=-Xmx1G' }
+  end
+
+  # check heap limit
+  # jmap -heap <java-proc>
+  describe command('sudo -H -u gerrit jmap -heap $(pgrep java) | grep MaxHeapSize') do
+    its('stdout') { should include '1024.0MB' }
   end
 end
