@@ -1,6 +1,6 @@
-property :name, String
-property :event, String
-property :source, String, default: 'kjljlkj'
+property :name, String, required: true
+property :event, String, required: true
+property :source, String, required: true
 property :variables, Hash, default: {}
 
 load_current_value do
