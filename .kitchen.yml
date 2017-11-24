@@ -29,6 +29,11 @@ suites:
     run_list:
       - recipe[gerrit::default]
       - recipe[gerrit_test::hook]
+    attributes:
+      gerrit:
+        config:
+          container:
+            heapLimit: 1G
     excludes: ["ubuntu-13.10"]
   - name: db-mysql
     run_list:

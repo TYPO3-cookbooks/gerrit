@@ -1,3 +1,5 @@
-GERRIT_SITE=<%= node.gerrit.install_dir %>
-GERRIT_JAR=<%= node.gerrit.install_dir %>/bin/gerrit.war
-JAVA_OPTIONS=-Xmx512m
+GERRIT_SITE=<%= node['gerrit']['install_dir'] %>
+GERRIT_JAR=<%= node['gerrit']['install_dir'] %>/bin/gerrit.war
+<% if node['gerrit']['config'].has_key?('container') && node['gerrit']['config']['container'].has_key?('heapLimit') %>
+JAVA_OPTIONS=-Xmx<%= node['gerrit']['config']['container']['heapLimit'] %>
+<% end %>
