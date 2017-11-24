@@ -52,7 +52,7 @@ end
 
 systemd_service 'gerrit' do
   description 'Web based code review and project management for Git based projects'
-  after %w( network.target )
+  after %w( network.target mysql.service)
   install do
     wanted_by 'multi-user.target'
   end
