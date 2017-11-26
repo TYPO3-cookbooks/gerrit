@@ -2,14 +2,10 @@ property :name, required: true
 property :uri, String, name_attribute: true
 property :ssh_key, String
 property :ssh_key_file, String
-property :gerrit_auth_group, String
-property :gerrit_mirror, TrueClass, default: true
-property :gerrit_threads, Integer, default: 8
-property :gerrit_timeout, Integer, default: 120
 
-load_current_value do
-
-end
+#############
+# Warning: This is only a helper. It does NOT write the replication.config file!
+#############
 
 action :create do
 
