@@ -77,6 +77,6 @@ control 'gerrit-4' do
 
   describe file('/var/gerrit/.ssh/known_hosts') do
     it { should exist }
-    it('content') { should include 'github.com' }
+    its('content') { should include 'github.com' }
   end
 end
