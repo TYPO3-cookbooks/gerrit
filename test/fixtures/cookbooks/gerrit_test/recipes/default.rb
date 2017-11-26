@@ -1,2 +1,2 @@
-include_recipe '::hooks'
+include_recipe '::hook'
 include_recipe '::replication'
