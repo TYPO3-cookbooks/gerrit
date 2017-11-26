@@ -26,7 +26,7 @@ action :create do
   # add ssh_known_hosts for ssh
   ssh_known_hosts host_uri.host do
     user node['gerrit']['user']
-    # FIXME just commented things out notifies :restart, 'service[gerrit]' # read only on startup of Gerrit
+    notifies :restart, 'service[gerrit]' # read only on startup of Gerrit
   end
 
   ssh_key_file = new_resource.ssh_key_file || ::File.join(node['gerrit']['home'], '.ssh', "replication_#{new_resource.name}")
@@ -41,7 +41,7 @@ action :create do
   ssh_config host_uri.host do
     options 'IdentityFile' => new_resource.ssh_key_file, 'PreferredAuthentications' => 'publickey'
     user node['gerrit']['user']
-    # FIXME just commented things out notifies :restart, 'service[gerrit]' # read only on startup of Gerrit
+    notifies :restart, 'service[gerrit]' # read only on startup of Gerrit
   end
 
 end
