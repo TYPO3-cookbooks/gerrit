@@ -65,3 +65,18 @@ control 'gerrit-3' do
     its('stdout') { should include '1024.0MB' }
   end
 end
+
+control 'gerrit-4' do
+  title 'Gerrit Replication'
+
+  describe file('/var/gerrit/review/.ssh/replication-github.com') do
+    it { should exist }
+    it('content') { should eq '123456' }
+    its('owner') { should eq 'gerrit'}
+  end
+
+  describe file('/var/gerrit/review/.ssh/known_hosts') do
+    it { should exist }
+    it('content') { should include 'github.com' }
+  end
+end

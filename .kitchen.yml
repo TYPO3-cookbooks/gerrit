@@ -28,7 +28,7 @@ suites:
   - name: db-h2
     run_list:
       - recipe[gerrit::default]
-      - recipe[gerrit_test::hook]
+      - recipe[gerrit_test::default]
     attributes:
       gerrit:
         config:
