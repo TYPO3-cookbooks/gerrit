@@ -28,7 +28,6 @@ include_recipe "gerrit::_config"
 include_recipe "gerrit::_database"
 
 include_recipe "gerrit::_deploy"
-include_recipe "gerrit::_replication"
 
 if node['gerrit']['peer_keys']['enabled']
   include_recipe "gerrit::peer_keys"
