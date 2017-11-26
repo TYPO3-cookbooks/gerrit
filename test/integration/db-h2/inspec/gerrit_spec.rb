@@ -69,13 +69,13 @@ end
 control 'gerrit-4' do
   title 'Gerrit Replication'
 
-  describe file('/var/gerrit/review/.ssh/replication-github.com') do
+  describe file('/var/gerrit/.ssh/replication_github.com') do
     it { should exist }
-    it('content') { should eq '123456' }
+    its('content') { should eq '123456' }
     its('owner') { should eq 'gerrit'}
   end
 
-  describe file('/var/gerrit/review/.ssh/known_hosts') do
+  describe file('/var/gerrit/.ssh/known_hosts') do
     it { should exist }
     it('content') { should include 'github.com' }
   end
