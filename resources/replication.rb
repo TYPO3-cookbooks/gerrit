@@ -26,6 +26,7 @@ action :create do
   # add ssh_known_hosts for ssh
   ssh_known_hosts host_uri.host do
     user node['gerrit']['user']
+    hashed false
     notifies :restart, 'service[gerrit]' # read only on startup of Gerrit
   end
 
