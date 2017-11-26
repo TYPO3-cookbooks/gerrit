@@ -40,7 +40,7 @@ action :create do
 
   # ssh_config for remote
   ssh_config host_uri.host do
-    options 'IdentityFile' => new_resource.ssh_key_file, 'PreferredAuthentications' => 'publickey'
+    options 'IdentityFile' => ssh_key_file, 'PreferredAuthentications' => 'publickey'
     user node['gerrit']['user']
     notifies :restart, 'service[gerrit]' # read only on startup of Gerrit
   end
