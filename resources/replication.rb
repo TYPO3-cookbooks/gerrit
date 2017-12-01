@@ -26,7 +26,7 @@ action :create do
     notifies :restart, 'service[gerrit]' # read only on startup of Gerrit
   end
 
-  ssh_key_file = new_resource.ssh_key_file || ::File.join(node['gerrit']['home'], '.ssh', "replication_#{new_resource.name}")
+  ssh_key_file = new_resource.ssh_key_file || ::File.join(node['gerrit']['home'], '.ssh', "replication_#{host_uri.host}")
   file ssh_key_file do
     content ssh_key
     owner node['gerrit']['user']
