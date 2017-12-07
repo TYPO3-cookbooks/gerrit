@@ -27,23 +27,6 @@ node['gerrit']['core_plugins'].each do |plugin|
   plugin_command << "  --install-plugin #{plugin}"
 end
 
-###################################
-# External Libs
-##################################
-
-[
-  'http://central.maven.org/maven2/org/bouncycastle/bcprov-jdk15on/1.56/bcprov-jdk15on-1.56.jar',
-  'http://central.maven.org/maven2/org/bouncycastle/bcpkix-jdk15on/1.56/bcpkix-jdk15on-1.56.jar',
-].each do |url,checksum|
-  lib_filename = Pathname.new(URI.parse(url).path).basename.to_s
-  remote_file "#{node['gerrit']['install_dir']}/lib/#{lib_filename}" do
-    source url
-    action :create_if_missing
-    owner node['gerrit']['user']
-    group node['gerrit']['group']
-  end
-end
-
 ####################################
 # Gerrit init
 ####################################
