@@ -78,5 +78,13 @@ control 'gerrit-4' do
   describe file('/var/gerrit/.ssh/known_hosts') do
     it { should exist }
     its('content') { should include 'github.com' }
+    its('content') { should include 'localhost' }
+    its('content') { should_not include 'example.com' }
+  end
+
+  describe file('/var/gerrit/.ssh/config') do
+    it { should exist }
+    # test that ssh_config is passed through
+    its('content') { should include 'Hostname localhost'}
   end
 end

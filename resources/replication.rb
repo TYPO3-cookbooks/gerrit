@@ -2,6 +2,7 @@ property :name, required: true
 property :uri, String, name_attribute: true
 property :ssh_key, String
 property :ssh_key_file, String
+property :hostname, String
 
 #############
 # Warning: This is only a helper. It does NOT write the replication.config file!
@@ -20,7 +21,7 @@ action :create do
   host_uri = URI(uri_without_repo).scheme ? URI(uri_without_repo) : URI('ssh://' + uri_without_repo)
 
   # add ssh_known_hosts for ssh
-  ssh_known_hosts host_uri.host do
+  ssh_known_hosts new_resource.hostname || host_uri.host do
     user node['gerrit']['user']
     hashed false
     notifies :restart, 'service[gerrit]' # read only on startup of Gerrit
@@ -34,9 +35,12 @@ action :create do
     not_if { ssh_key.nil? }
   end
 
+  ssh_options = {'User' => host_uri.user, 'IdentityFile' => ssh_key_file, 'PreferredAuthentications' => 'publickey'}
+  ssh_options['Hostname'] = new_resource.hostname if new_resource.hostname
+
   # ssh_config for remote
   ssh_config host_uri.host do
-    options 'IdentityFile' => ssh_key_file, 'PreferredAuthentications' => 'publickey'
+    options ssh_options
     user node['gerrit']['user']
     notifies :restart, 'service[gerrit]' # read only on startup of Gerrit
   end
