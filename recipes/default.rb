@@ -38,7 +38,7 @@ if node['gerrit']['batch_admin_user']['enabled']
 end
 
 # we have to split up the service because of the immediate notification
-service "gerrit-definition" do
+service "gerrit-without-readiness-check" do
   service_name "gerrit"
   supports :status => false, :restart => true, :reload => true
   action :enable
