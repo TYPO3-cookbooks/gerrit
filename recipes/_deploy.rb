@@ -11,9 +11,9 @@ remote_file war_path do
   owner node['gerrit']['user']
   source node['gerrit']['war']['download_url'] % {version: node['gerrit']['version']}
   # checksum node['gerrit']['war']['checksum'][node['gerrit']['version']]
-  notifies :run, "execute[gerrit-init]", :immediately
   # important during upgrade
-  notifies :stop, "service[gerrit]", :immediately
+  notifies :stop, "service[gerrit-without-readiness-check]", :immediately
+  notifies :run, "execute[gerrit-init]", :immediately
   action :create_if_missing
 end
 
