@@ -12,7 +12,6 @@ remote_file war_path do
   source node['gerrit']['war']['download_url'] % {version: node['gerrit']['version']}
   # checksum node['gerrit']['war']['checksum'][node['gerrit']['version']]
   # important during upgrade
-  notifies :stop, "service[gerrit-without-readiness-check]", :immediately
   notifies :run, "execute[gerrit-init]", :immediately
   action :create_if_missing
 end
@@ -37,6 +36,7 @@ execute "gerrit-init" do
   cwd "#{node['gerrit']['home']}/war"
   command "java -jar #{war_path} init --batch --no-auto-start -d #{node['gerrit']['install_dir']} #{plugin_command}"
   action :nothing
+  notifies :stop, "service[gerrit-without-readiness-check]", :before
   notifies :restart, "service[gerrit]"
 end
 
