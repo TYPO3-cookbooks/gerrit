@@ -8,9 +8,13 @@ version          IO.read(File.join(File.dirname(__FILE__), 'VERSION')) rescue '0
 
 depends "apache2"
 depends "build-essential"
+depends 'curl', '~> 2.0.4'
 depends "database", "= 1.3.12"
 depends "mysql", "= 1.3.0"
-depends "java"
+depends "java", ">= 4.1.0"
 depends "git"
 depends "ssh"
 depends "systemd", "< 3.0"
+
+# For compatibility with Chef 12
+depends "seven_zip",    "< 3.0.0"

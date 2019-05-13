@@ -83,7 +83,7 @@ module Gerrit
     end
 
     def wait_until_ready!(endpoint, status)
-      timeout = 60
+      timeout = 300
       Timeout.timeout(timeout, ConnectTimeout) do
         begin
           open(endpoint)
@@ -97,7 +97,7 @@ module Gerrit
           return if e.message =~ /^#{status}/
 
           Chef::Log.debug("Gerrit is not accepting requests - #{e.message}")
-          sleep(0.5)
+          sleep(2)
           retry
         end
       end

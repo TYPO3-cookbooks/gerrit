@@ -83,8 +83,6 @@ default['gerrit']['peer_keys']['enabled'] = false
 default['gerrit']['peer_keys']['public'] = ""
 default['gerrit']['peer_keys']['private'] = ""
 
-# Gerrit 2.9 requires Java 7
-default['java']['jdk_version'] = "8"
-default['java']['install_flavor'] = "oracle"
-default['java']['oracle']['accept_oracle_download_terms'] = true
-
+# Gerrit >= 2.14 requires Java 8
+default['java']['jdk_version'] = '8'
+default['java']['install_flavor'] = 'corretto'
