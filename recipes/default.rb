@@ -19,6 +19,7 @@
 #
 
 include_recipe "git"
+include_recipe "curl"
 include_recipe "java"
 # used later on to restart after JRE update
 include_recipe "java::notify"
@@ -48,7 +49,7 @@ service "gerrit" do
   action :start
   subscribes :restart, 'log[jdk-version-changed]', :delayed
   # proceed only after finished restart
-  notifies :run, 'ruby_block[wait_until_ready]', :immediately
+  notifies :run, 'ruby_block[wait_until_ready]', :delayed
 end
 
 ruby_block "wait_until_ready" do
